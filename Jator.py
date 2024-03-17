@@ -58,7 +58,7 @@ def termux():
     try:
         sec = int(sec)
         while True:
-            run('service tor start')
+            run('killall -HUP tor')
             print("IP changed")
             time.sleep(int(sec))
     except:
