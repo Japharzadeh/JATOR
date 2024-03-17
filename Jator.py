@@ -40,10 +40,14 @@ def ubuntu():
     run('python -m pip install requests')
     print('Downloads completed!!')
     sec = input('[+] time to change Ip in Sec [type=60] >> ')
-    while True:
-        run('service tor start')
-        print("IP changed")
-        time.sleep(sec)
+    try:
+        sec = int(sec)
+        while True:
+            run('service tor start')
+            print("IP changed")
+            time.sleep(int(sec))
+    except:
+        print("Error")
 def termux():
     run('pkg upgrade -y')
     run('pkg update -y')
@@ -51,24 +55,30 @@ def termux():
     run('python -m pip install requests')
     print('Downloads completed!!')
     sec = input('[+] time to change Ip in Sec [type=60] >> ')
-    while True:
-        run('service tor start')
-        print("IP changed")
-        time.sleep(sec)
+    try:
+        sec = int(sec)
+        while True:
+            run('service tor start')
+            print("IP changed")
+            time.sleep(int(sec))
+    except:
+        print("Error")
+    
 
 platform = platform.system()
-if platform == 'windows':
+if platform == 'Windows':
     print("Can't open in windows:(" )
-elif platform == 'linux':
-    type = input('''[1] Ubuntu
+elif platform == 'Linux':
+    type = input('''
+    [1] Ubuntu
     [2] Termux
-    [3] Kalli''')
+    [3] Kalli
+    which? >> ''')
     if type == '1':
         ubuntu()
     elif type == '2':
         termux()
     elif type == '3':
         ubuntu()
-
 
 
